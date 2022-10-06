@@ -1,0 +1,124 @@
+
+# config data bases
+spring:
+  # config Rabbitmq
+  cloud:
+    stream:
+      bindings:
+        cargoConfigGeneralChannel:
+          binder: rabbit1
+          destination: cargo.config.general
+          group: cargoconfiggeneralgroup
+        cargoActiveCGChannel:
+          binder: rabbit1
+          destination: cargo.active.cg
+          content-type: application/json
+          group: cargoactivecggroup
+        cargoConfigGeneralCancelChannel:
+          binder: rabbit1
+          destination: cargo.cancel.kardex
+          group: cargocancelkardexgroup
+      binders:
+        rabbit1:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.7.133
+                port: 5672
+                username: admin
+                password: admin
+    #profiles: test
+    #main:
+    #web-environment: false
+    #add disable this option jmx
+    #jmx:
+    #enabled: false
+  # Datasource and JPA configuration to be used for using the same tokenstore as the authorization server for
+  # the defined resource server. Note that there can't be 2 different root nodes, so datasource falls under the "spring" node.
+  datasource:
+    url: jdbc:mysql://192.168.7.168:3306/config_general
+    username: airdbuser
+    password: Transoft1!
+    driver-class: com.mysql.jdbc.Driver
+    #initialize: true
+    #separator: ^
+    #continueOnError: false
+    #schema: classpath:/db-scripts/0.0.1/schema.sql
+    #data: classpath:/db-scripts/0.0.1/masterData.sql
+  #
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    hibernate:
+      #ddl-auto: create
+      show_sql: true
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      # config freemarker
+      #freemarker:
+      #template-loader-path: /templates/
+      #suffix: .ftl
+
+      #messages:
+      #basename: i18n/messages
+    #messages:
+    #basename: i18n/messages
+    #cache-seconds: -1
+    #encoding: UTF-8
+
+    #velocity:
+    #resourceLoaderPath: classpath:/templates/velocity
+# Mailing
+mail:
+  protocol: smtp
+  smtp:
+    host: mailsrv.transoft.bo
+    port: 25
+  support:
+    username: ecojet@mail.transoft.bo
+    password: 3coJJ3T
+    source: ecojet@mail.transoft.bo
+
+# Logging settings.
+logging:
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level:
+    # config application
+    # com.transoft.completeair.configgeneral: DEBUG
+    com.transoft.completeair: INFO
+  # Logger-specific levels.
+  loggers:
+    # Redirects SQL logs to a separate file
+    org.hibernate.SQL: DEBUG
+    org.springframework.web: DEBUG
+
+# modified enable option
+server:
+  port: 8083
+# config Api Gateway Oauth
+serviceOauth:
+  login: http://oauth-service/uaa/oauth/token?client_id=
+  refresh: http://oauth-service/uaa/oauth/token?grant_type=refresh_token&refresh_token=
+  logout: http://oauth-service/uaa/api/logout-up
+  account: http://192.168.7.186:9999/uaa/api/account
+  #
+  #tomcat:
+  #version: 8.0.32
+# config eureka
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.7.186:8761/eureka/
+  instance:
+    metadataMap:
+      instanceId: ${spring.application.name}:${server.port}
+
+security:
+  oauth2:
+    client:
+      accessTokenUri: http://192.168.7.186:9999/uaa/oauth/token
+    resource:
+      userInfoUri: http://192.168.7.186:9999/uaa/api/user
+
+flyway:
+  baselineOnMigrate: true
