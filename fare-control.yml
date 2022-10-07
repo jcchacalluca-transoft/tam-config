@@ -37,7 +37,7 @@ spring:
     separator: ^
     continueOnError: false
     schema: classpath:/db-scripts/0.0.1/schema.sql
-    data: classpath:/db-scripts/0.0.1/masterData.sql
+    #data: classpath:/db-scripts/0.0.1/masterData.sql
   #
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
