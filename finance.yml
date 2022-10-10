@@ -82,10 +82,10 @@ spring:
     username: root
     password: mysql
     driver-class: com.mysql.jdbc.Driver
-    #initialize: true
-    #separator: ^
-    #continueOnError: false
-    #schema: classpath:/db-scripts/0.0.1/schema.sql
+    initialize: true
+    separator: ^
+    continueOnError: false
+    schema: classpath:/db-scripts/0.0.1/schema.sql
     #data: classpath:/db-scripts/0.0.1/masterData.sql
   #
   jpa:
