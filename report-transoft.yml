@@ -27,7 +27,7 @@ spring:
     initialize: true
     separator: ^
     continueOnError: false
-    schema: classpath:/db-scripts/0.0.1/schema.sql
+    #schema: classpath:/db-scripts/0.0.1/schema.sql
     #data: classpath:/db-scripts/0.0.1/masterData.sql
   #
   jpa:
@@ -72,7 +72,6 @@ server:
 eureka:
   client:
     serviceUrl:
-      #defaultZone: http://actuator:password@localhost:8761/eureka/
       defaultZone: http://192.168.7.186:8761/eureka/
   instance:
     metadataMap:
