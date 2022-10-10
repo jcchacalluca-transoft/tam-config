@@ -40,6 +40,7 @@ spring:
     #data: classpath:/db-scripts/0.0.1/masterData.sql
   #
   jpa:
+    database: MYSQL
     database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: true
     hibernate:
