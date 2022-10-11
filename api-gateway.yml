@@ -43,7 +43,7 @@ serviceOauth:
   refresh: http://oauth-service/uaa/oauth/token?grant_type=refresh_token&refresh_token=
   logout: http://oauth-service/uaa/api/logout-up
   account: http://oauth-service/uaa/api/account
-  errorOauth: http://172.16.10.148:${server.port}
+  errorOauth: http://172.16.7.186:${server.port}
     #spring.mvc.dispatch-options-request=true
     # Define the routes which determine what URL are serviced by what applications.
     # The application/services are defined in the bootstrap.yml file of individual applications
