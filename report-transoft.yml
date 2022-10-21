@@ -21,7 +21,7 @@ spring:
   # the defined resource server. Note that there can't be 2 different root nodes, so datasource falls under the "spring" node.
   datasource:
     url: jdbc:mysql://192.168.7.168:3306/report?useSSL=false
-    username: root
+    username: transoft-tam
     password: mysql
     driver-class: com.mysql.jdbc.Driver
     #initialize: true
