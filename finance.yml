@@ -102,9 +102,9 @@ mail:
     host: mailsrv.transoft.bo
     port: 25
   support:
-    username: ecojet@mail.transoft.bo
-    password: 3coJJ3T
-    source: ecojet@mail.transoft.bo
+    username: tam@mail.transoft.bo
+    password: npt4m4576
+    source: tam@mail.transoft.bo
   notify:
     - jcchacalluca@transoft.bo
     - cguzman@transoft.bo
